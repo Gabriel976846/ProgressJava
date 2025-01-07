@@ -1,4 +1,4 @@
-package src;
+package CodigosFeitosDuranteEstudos;
 
 import java.util.Locale; // Biblioteca para o meu programa usar o ponto flutuante
 import java.util.Scanner;

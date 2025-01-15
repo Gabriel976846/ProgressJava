@@ -36,5 +36,6 @@ public class MediaNota {
             System.out.println("Notas fora do limite");
         }
     }
+
 }
 

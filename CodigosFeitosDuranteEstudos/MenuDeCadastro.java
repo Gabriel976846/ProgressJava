@@ -66,6 +66,7 @@ public class MenuDeCadastro {
                 // Opção caso nenhum dos três valores tenha sido escolhiido
                 default:
                     System.out.println("Escolha um valor possivel");
+                    break;
             }
         }
     }

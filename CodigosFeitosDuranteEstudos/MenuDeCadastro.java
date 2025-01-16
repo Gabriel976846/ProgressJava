@@ -8,9 +8,6 @@ import java.util.Scanner;
 * Switch Case
 */
 
-/* OBS: Por alguma motivo, o resultado do case 2, não aparece no meu terminal
-pode ser erro no codigo, ou na minha maquina, ou ate mesmo algum bug na IDLE
-*/
 public class MenuDeCadastro {
     public static void main(String[] args) {
         Scanner EntradaDeDados = new Scanner(System.in);
@@ -42,7 +39,6 @@ public class MenuDeCadastro {
                     if (quantidadepessoas < valormaximo) {
                         System.out.print("Nome: ");
                         String nome = EntradaDeDados.nextLine();
-                        EntradaDeDados.nextLine();
                         pessoas[quantidadepessoas] = nome;
                         quantidadepessoas++;
                     } else {

@@ -20,7 +20,7 @@ public class Teste {
         return (x + y) / 2;
     }
 
-    public double resultado(double Resultado){
+    public double resultado(double Resultado) {
         return 10 - Resultado;
     }
 }

@@ -4,6 +4,11 @@ public class Teste {
     double PrimeiraNota;
     double SegundaNota;
 
+    @Override
+    public String toString(){
+        return "Nota1: " + PrimeiraNota + "Nota2: " + SegundaNota;
+    }
+
     public void Aprovado(){
         System.out.println("Você foi aprovado");
     }

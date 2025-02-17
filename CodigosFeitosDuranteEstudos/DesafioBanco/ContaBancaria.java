@@ -1,20 +1,28 @@
 package CodigosFeitosDuranteEstudos.DesafioBanco;
 
-public class ContaBancaria implements Conta{
-    double saldo;
-    double saldocorrente;
-    double saldopoupanca;
-    double valor;
+public abstract class ContaBancaria implements Conta{
+    private long saldoconta;
+
+    // Get e setter do meu atributo
+    public long getSaldoconta() {
+        return saldoconta;
+    }
+
+    public void setSaldoconta(long saldoconta) {
+        this.saldoconta = saldoconta;
+    }
 
     @Override
-    public abstract void deposito(double valor);
+    public abstract void deposito(long valordeposito);
 
     @Override
-    public abstract void consultarsaldo();
+    public abstract void tranferencia(long valorasertranferido);
 
-    public void taxa(double calculovalor){
-        double valortaxa = 0.95; // Taxa de 5%
-        this.saldo = calculovalor * valortaxa;
-        System.out.println("Taxa de 5% pelo serviço aplicada");
+    @Override
+    public abstract void consultarsaldo(long valornaconta);
+
+    public void taxadeservico(long valortaxaquevaidescontar){
+        double porcentotaxaemdecimal = 0.98;
+        this.saldoconta = (long) (valortaxaquevaidescontar * porcentotaxaemdecimal);
     }
 }

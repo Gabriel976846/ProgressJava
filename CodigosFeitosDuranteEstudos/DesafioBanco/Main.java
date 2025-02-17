@@ -1,81 +1,73 @@
 package CodigosFeitosDuranteEstudos.DesafioBanco;
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Objetos Utilizados
-        ContaCorrente contaCorrente = new ContaCorrente();
-        ContaPoupanca contaPoupanca = new ContaPoupanca();
+        Scanner caixadeentrada = new Scanner(System.in);
 
-        // entrada de valores
-        Scanner entradaDeDados = new Scanner(System.in);
+        // Objetos utlizados
+        ContaCorrente contaCorrente = new ContaCorrente(0);
+        ContaPoupanca contaPoupanca = new ContaPoupanca(0);
 
-        while (true){
-            // Menu interativo
+        while (true) {
+            // Menu Interativo
             System.out.println("==== Banco Javeiro ====");
             System.out.println("1 - Deposito");
-            System.out.println("2 - Vizualizar Saldo");
-            System.out.println("3 - Sair do Banco");
+            System.out.println("2 - Consultar saldo");
+            System.out.println("3 - Tranferência");
+            System.out.println("4 - Sair do banco");
             System.out.print("Escolha: ");
-            int escolha = entradaDeDados.nextInt();
+            int escolha = caixadeentrada.nextInt();
 
-            // Realição do opção escolhida
-            switch (escolha){
+            switch (escolha) {
+                // Realização do Opção de deposito
                 case 1:
-                    System.out.println("Escolha o tipo de conta que deseja depositar.");
-                    System.out.println("1 - Conta Corrente");
-                    System.out.println("2 - Conta Poupança");
-                    System.out.print("Opção: ");
-                    int opcao = entradaDeDados.nextInt();
-
-                    // Deposito de valores na conta escolhida
-                    if (opcao == 1){
-                        System.out.println("Será cobrado uma taxa pelo serviço.");
-                        System.out.print("Valor: ");
-                        double  entradadepositocorrente = entradaDeDados.nextDouble();
-                        contaCorrente.deposito(entradadepositocorrente);
-                    } else if (opcao == 2) {
-                        System.out.println("Cobrado taxa pelo serviço.");
-                        System.out.print("Valor: ");
-                        double entradadepositopoupanca = entradaDeDados.nextDouble();
-                        contaPoupanca.deposito(entradadepositopoupanca);
-                    } else {
-                        System.out.println("Opção não encontrada. Tente Novamente");
-                    }
-                    break;
-
-                // Consulta de saldo na conta escolhida
-                case 2:
-                    System.out.println("Escolha sua conta que deseja vizualizar o Saldo");
+                    System.out.println("Em qual conta você quer Depositar?");
                     System.out.println("1 - Corrente");
                     System.out.println("2 - Poupança");
-                    int desisao = entradaDeDados.nextInt();
+                    System.out.print("Opção: ");
+                    int opcaodeposito = caixadeentrada.nextInt();
 
-                    if (desisao == 1){
-                        contaCorrente.consultarsaldo();
-                    } else if (desisao == 2) {
-                        contaPoupanca.consultarsaldo();
+                    if (opcaodeposito == 1) {
+                        System.out.println("Digite O valor a ser depositado");
+                        System.out.print("Valor: R$");
+                        long valordepositocorrente = caixadeentrada.nextLong();
+                        contaCorrente.deposito(valordepositocorrente);
+
+                    } else if (opcaodeposito == 2) {
+                        System.out.println("Digite O valor a ser depositado");
+                        System.out.print("Valor: R$");
+                        long valordepositopoupanca = caixadeentrada.nextLong();
+
                     } else {
                         System.out.println("Opção não encontrada. Tente Novamente");
                     }
                     break;
 
-                // Saida do banco
-                case 3:
-                    System.out.println("Saindo do Banco");
+                // Realização da opção de Ver o saldo da conta
+                case 2:
+                    System.out.println("Deseja Ver Saldo de qual conta?");
+                    System.out.println("1 - Corrente");
+                    System.out.println("2 - Poupança");
+                    System.out.print("Opção: ");
+                    int opcaosaldo = caixadeentrada.nextInt();
+
+                    if (opcaosaldo == 1) {
+                        contaCorrente.consultarsaldo(contaCorrente.getSaldocontacorrente());
+                    } else if (opcaosaldo == 2) {
+                        contaPoupanca.consultarsaldo(contaPoupanca.getSaldocontapoupanca());
+                    } else {
+                        System.out.println("Opção não encontrada. Tente Novamente");
+                    }
                     break;
 
-                default:
-                    System.out.println("Opção não achada. Tente Novamente");
+                // Funcionamento da opção de tranferencia
+                // Correte -> Poupança
+                // Poupança -> Corrente
+                case 3:
             }
-            if (escolha == 3){
-                System.out.println("Volte sempre.");
-                break;
-            }
-
-            entradaDeDados.close();
         }
+
 
     }
 }

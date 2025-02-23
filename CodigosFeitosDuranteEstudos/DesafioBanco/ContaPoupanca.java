@@ -39,8 +39,17 @@ public class ContaPoupanca extends ContaBancaria{
         }
     }
 
-    @Override
-    public void tranferencia(long valorasertranferido) {
-
+    // metodo contruido necessitando referencia o objeto para poder ser possivel a tranferencia de valores
+    public void tranferencia(long valorasertranferido, ContaCorrente contaCorrente){
+        if (valorasertranferido > 0){
+            if (valorasertranferido <= contaCorrente.getSaldocontacorrente()){
+                setSaldocontapoupanca(getSaldocontapoupanca() + valorasertranferido);
+                contaCorrente.setSaldocontacorrente(contaCorrente.getSaldocontacorrente() - valorasertranferido);
+            } else {
+                System.out.println("O valor que deseja tranferir, é maior que o valor na conta poupança");
+            }
+        } else {
+            System.out.println("Digite um valor acima do minimo");
+        }
     }
 }

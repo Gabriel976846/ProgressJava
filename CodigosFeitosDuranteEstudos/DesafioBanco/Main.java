@@ -38,6 +38,7 @@ public class Main {
                         System.out.println("Digite O valor a ser depositado");
                         System.out.print("Valor: R$");
                         long valordepositopoupanca = caixadeentrada.nextLong();
+                        contaPoupanca.deposito(valordepositopoupanca);
 
                     } else {
                         System.out.println("Opção não encontrada. Tente Novamente");
@@ -65,6 +66,43 @@ public class Main {
                 // Correte -> Poupança
                 // Poupança -> Corrente
                 case 3:
+                    System.out.println("Escolha qual conta recebera o dinheiro.");
+                    System.out.println("1 - Corrente");
+                    System.out.println("2 - Poupança");
+                    System.out.print("Escolha: ");
+                    int escolhatranferencia = caixadeentrada.nextInt();
+
+                    // metodo contruido necessitando referencia o objeto para poder ser possivel a tranferencia de valores
+                    if (escolhatranferencia == 1){
+                        System.out.println("Digite o valor a ser tranferido.");
+                        System.out.print("Valor: ");
+                        long valorpoupancaparacorrente = caixadeentrada.nextLong();
+
+                        contaCorrente.tranferencia(valorpoupancaparacorrente, contaPoupanca);
+                    } else if (escolhatranferencia == 2) {
+                        System.out.println("Digite o valor a ser tranferido.");
+                        System.out.print("Valor: ");
+                        long valorcorrenteparapoupanca = caixadeentrada.nextLong();
+
+                        contaPoupanca.tranferencia(valorcorrenteparapoupanca, contaCorrente);
+                    } else {
+                        System.out.println("Digite uma opção valida. Tente Novamente");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Volte Sempre");
+                    break;
+
+                default:
+                    System.out.println("Digite uma opção valida pro sistema.");
+                    break;
+            }
+
+            // encerramento do programa
+            if (escolha == 4){
+                System.out.println("Saindo do Banco");
+                caixadeentrada.close();
             }
         }
 

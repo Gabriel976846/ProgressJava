@@ -16,9 +16,6 @@ public abstract class ContaBancaria implements Conta{
     public abstract void deposito(long valordeposito);
 
     @Override
-    public abstract void tranferencia(long valorasertranferido);
-
-    @Override
     public abstract void consultarsaldo(long valornaconta);
 
     public void taxadeservico(long valortaxaquevaidescontar){

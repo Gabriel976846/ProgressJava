@@ -40,11 +40,18 @@ public class ContaCorrente extends ContaBancaria{
         }
     }
 
-    @Override
-    public void tranferencia(long valorasertranferido) {
-        if (valorasertranferido > 0){
-            taxadeservico(valorasertranferido);
-            setSaldocontacorrente(valorasertranferido + getSaldocontacorrente());
+    // metodo contruido necessitando referencia o objeto para poder ser possivel a tranferencia de valores
+    public void tranferencia(long valorasertranferido, ContaPoupanca contaPoupanca) {
+        if (valorasertranferido > 0) {
+            if (valorasertranferido <= contaPoupanca.getSaldocontapoupanca()) {
+                taxadeservico(valorasertranferido);
+                setSaldocontacorrente(getSaldocontacorrente() + valorasertranferido);
+                contaPoupanca.setSaldocontapoupanca(contaPoupanca.getSaldocontapoupanca() - valorasertranferido);
+            } else {
+                System.out.println("O valor que vc deseja tranferir é maior que o valor na conta");
+            }
+        } else {
+            System.out.println("Digite um valor valido.");
         }
     }
 

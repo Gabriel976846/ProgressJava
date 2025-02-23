@@ -81,7 +81,7 @@ public class Main {
                         contaCorrente.tranferencia(valorpoupancaparacorrente, contaPoupanca);
                     } else if (escolhatranferencia == 2) {
                         System.out.println("Digite o valor a ser tranferido.");
-                        System.out.print("Valor: ");
+                        System.out.print("Valor: R$");
                         long valorcorrenteparapoupanca = caixadeentrada.nextLong();
 
                         contaPoupanca.tranferencia(valorcorrenteparapoupanca, contaCorrente);
